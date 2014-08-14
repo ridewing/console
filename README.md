@@ -1,6 +1,6 @@
 console
 =======
-###Making use of the javascript console a lot easier.
+###Making the javascript console a lot nicer.
 
 ## To get started
 
