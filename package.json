@@ -1,0 +1,9 @@
+{
+  "name": "console",
+  "title": "Ridewing Console Tools",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "~3.8.2",
+    "gulp-typescript": "~0.3.1"
+  }
+}

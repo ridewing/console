@@ -87,7 +87,7 @@ module Ridewing
 			return h+":"+m+":"+s;
 		}
 
-		private getStyle(color:string = this._color, background:string = this._background):string
+		public getStyle(color:string = this._color, background:string = this._background):string
 		{
 			return 'color:'+color+';background:'+background+';'
 		}
