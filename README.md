@@ -2,6 +2,20 @@ console
 =======
 ###Making use of the javascript console a lot easier.
 
+## To get started
+
+	var console = new Ridewing.Console();
+
+---
+## Basic Javascript usage
+For basic javascript usage include the file: **build/console.js** in your project.
+
+## Typescript usage
+For Typescript projects include the **src/console.ts** in your project.
+
+---
+
+## Methods
 
 ####.log( value )
 The go-to method for basic usage
