@@ -103,10 +103,18 @@ var Ridewing;
             if (!this.enabled)
                 return;
 
-            if (type == 'simple')
-                window.console.log('%c%s ', this.getStyle(), str);
-            else
-                window.console[type]('%c[%s] %c %s ', 'color:#4b729c;', this.getTimeStamp(), this.getStyle(color, background), str);
+            var objectType = '%s';
+
+            if (typeof str == 'object')
+                objectType = '%o';
+            else if (typeof str == 'number')
+                objectType = '%d';
+
+            if (type == 'simple') {
+                window.console.log('%c ' + objectType, this.getStyle(), str);
+            } else {
+                window.console[type]('%c[%s] %c ' + objectType + ' ', 'color:#4b729c;', this.getTimeStamp(), this.getStyle(color, background), str);
+            }
         };
 
         /**
