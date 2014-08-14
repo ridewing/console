@@ -4,7 +4,7 @@ console
 
 ## To get started
 
-	var console = new Ridewing.Console();
+	var c = new Ridewing.Console();
 
 ---
 ## Basic Javascript usage
