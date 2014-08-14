@@ -7,6 +7,12 @@ var Ridewing;
             this._background = '#fff';
             this._divider = '----------------------------------------------------------------';
         }
+        /**
+        * Setup the default color and background.
+        * @param color
+        * @param background
+        * @param divider
+        */
         Console.prototype.setup = function (color, background, divider) {
             if (typeof color === "undefined") { color = this._color; }
             if (typeof background === "undefined") { background = this._background; }
@@ -16,35 +22,62 @@ var Ridewing;
             this._divider = divider;
         };
 
+        /**
+        * Standard log function.
+        * @param str
+        */
         Console.prototype.log = function (str) {
             this.write(str);
         };
 
+        /**
+        * Makes the content text white with a blue background.
+        * @param str
+        */
         Console.prototype.info = function (str) {
             this.write(str, 'info', '#c8c8ff', '#0000ff');
         };
 
+        /**
+        * Makes the content text black with a yellow background.
+        * @param str
+        */
         Console.prototype.warn = function (str) {
             this.write(str, 'warn', 'black', '#ffff00');
         };
 
+        /**
+        * Makes the content text white with a red background.
+        * @param str
+        */
         Console.prototype.error = function (str) {
             this.write(str, 'error', '#ffc5c5', '#ff0000');
         };
 
+        /**
+        * Creates a handy divider for you in the console.
+        */
         Console.prototype.divide = function () {
             this.write(this._divider, 'simple');
         };
 
+        /**
+        * Clear the console
+        */
         Console.prototype.clear = function () {
-            console.clear();
+            window.console.clear();
         };
 
+        /**
+        * Create a console group from object or array
+        * @param name
+        * @param items
+        */
         Console.prototype.group = function (name, items) {
             if (!this.enabled)
                 return;
 
-            console.group(name);
+            window.console.group(name);
             for (var i in items) {
                 var value = items[i];
 
@@ -53,9 +86,16 @@ var Ridewing;
 
                 this.write(value, 'simple');
             }
-            console.groupEnd();
+            window.console.groupEnd();
         };
 
+        /**
+        * Internal log function to do some style and actual console log
+        * @param str
+        * @param type
+        * @param color
+        * @param background
+        */
         Console.prototype.write = function (str, type, color, background) {
             if (typeof type === "undefined") { type = 'log'; }
             if (typeof color === "undefined") { color = '#4b729c;'; }
@@ -64,11 +104,15 @@ var Ridewing;
                 return;
 
             if (type == 'simple')
-                console.log('%c%s ', this.getStyle(), str);
+                window.console.log('%c%s ', this.getStyle(), str);
             else
-                console[type]('%c[%s] %c %s ', 'color:#4b729c;', this.getTimeStamp(), this.getStyle(color, background), str);
+                window.console[type]('%c[%s] %c %s ', 'color:#4b729c;', this.getTimeStamp(), this.getStyle(color, background), str);
         };
 
+        /**
+        * Get current timestamp in a nice format
+        * @returns {string}
+        */
         Console.prototype.getTimeStamp = function () {
             var date = new Date();
 
@@ -83,6 +127,12 @@ var Ridewing;
             return h + ":" + m + ":" + s;
         };
 
+        /**
+        * Generate style string
+        * @param color
+        * @param background
+        * @returns {string}
+        */
         Console.prototype.getStyle = function (color, background) {
             if (typeof color === "undefined") { color = this._color; }
             if (typeof background === "undefined") { background = this._background; }
