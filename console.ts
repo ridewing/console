@@ -6,11 +6,13 @@ module Ridewing
 
 		private _color:string = '#4b729c';
 		private _background:string = '#fff';
+		private _divider:string = '----------------------------------------------------------------';
 
-		public setup(color:string = this._color, background:string = this._background)
+		public setup(color:string = this._color, background:string = this._background, divider:string = this._divider):void
 		{
-			this._color = color;
-			this._background = background;
+			this._color 		= color;
+			this._background 	= background;
+			this._divider 		= divider;
 		}
 
 		public log( str:any ):void
@@ -35,7 +37,7 @@ module Ridewing
 
 		public divide():void
 		{
-			this.write('----------------------------------------------------------------', 'simple');
+			this.write(this._divider, 'simple');
 		}
 
 		public clear():void
@@ -46,7 +48,7 @@ module Ridewing
 		public group(name:string, items:any):void
 		{
 			if(!this.enabled) return;
-			
+
 			console.group(name);
 			for(var i in items)
 			{
